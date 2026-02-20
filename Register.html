@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam Portal</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100VH;
+            background: url('https://wallpapers.com/images/hd/sky-blue-background-oscwpb3hfcmtjma3.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }.container {
+        background: white;
+        padding: 20px;
+        width: 50%;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+        text-align: left;
+    }
+
+    input, select {
+        width: 90%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .btn {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .btn:hover {
+        background-color: blue;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+</head>
+<body><div class="container" id="registrationPage">
+    <h2>Online Exam Registration</h2>
+    <form id="registrationForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="regno">Registration Number:</label>
+        <input type="text" id="regno" name="regno" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <button type="button" class="btn" onclick="validateAndSubmit()">Submit</button>
+    </form>
+</div>
+
+<div class="container hidden" id="successPage">
+    <h2>You have successfully registered!</h2>
+    <p>Click the button below to view the exam instructions.</p>
+    <button class="btn" onclick="showInstructionsPage()">View Instructions</button>
+</div>
+
+<div class="container hidden" id="instructionsPage">
+    <h2>Exam Instructions</h2>
+    <ol>
+        <li>Read each question carefully before answering.</li>
+        <li>Once you start the exam, you cannot go back to the previous page.</li>
+        <li>Do not refresh or close the browser during the exam.</li>
+        <li>Ensure a stable internet connection.</li>
+    </ol>
+</div>
+
+<script>
+    function validateAndSubmit() {
+        let name = document.getElementById("name").value;
+        let regno = document.getElementById("regno").value;
+        let phone = document.getElementById("phone").value;
+        let dob = document.getElementById("dob").value;
+        let gender = document.getElementById("gender").value;
+
+        if (!name || !regno || !phone || !dob || !gender) {
+            alert("Please fill out all fields before submitting.");
+            return;
+        }
+
+        localStorage.setItem("fullname",name);
+
+        document.getElementById("registrationPage").classList.add("hidden");
+        document.getElementById("successPage").classList.remove("hidden");
+        
+    }
+
+    function showInstructionsPage() {
+        document.getElementById("successPage").classList.add("hidden");
+        document.getElementById("instructionsPage").classList.remove("hidden");
+    }
+</script>
+
+</body>
+</html>

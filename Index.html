@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizByte - Online Exam Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://img.freepik.com/premium-photo/pastel-purple-3d-illustration-back-school-product-display-podium-stand-side-pencils-books_611870-2620.jpg') no-repeat center center/cover;
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            padding: 30px;
+            font-size: 26px;
+            
+            color: black;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            position: relative;
+            top: 100px;
+        }
+
+        .container {
+            padding: 20px;
+            width: 50%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+            
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: #FF6B81;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #7b3e47;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">QuizByte - Your Ultimate Exam Portal</div>
+
+    <div class="container">
+        <h1 style="color: #FF6B81;">Welcome to QuizByte</h1>
+        <p style="color: black;">Your ultimate platform for online exams and assessments. Ready to test your knowledge? Let’s get started!</p>
+        <p style="color: black;">Take your exams with ease, track your progress, and aim for success!</p>
+        
+        <div class="button-container">
+            <a href="Register.html" class="btn">Registration</a>
+            <a href="Exam.html" class="btn">Take Exam</a>
+            <a href="Marks.html" class="btn">View Marks</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let user = localStorage.getItem("fullname");
+            if (!user) {
+                document.querySelector(".btn[href='Exam.html']").addEventListener("click", function (event) {
+                    alert("Please register before taking the exam!");
+                    event.preventDefault();
+                });
+            }
+        });
+     </script>
+</body>
+</html>
